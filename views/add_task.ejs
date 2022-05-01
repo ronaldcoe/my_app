@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css\styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
+    <title>My App</title>
+</head>
+<body>
+    <header>
+        <div id="img_user">
+            <img src="img\avatar.png">
+        </div>
+        <div id="welcome">
+            Welcome
+            <div id="user_name">
+                Ronald
+            </div>
+        </div>
+        <div id="quote"></div>
+        <div id="date"></div>            
+    </header>
+    <div id="wrapper">
+        <div id="summary">
+            <h1>Tips for task creation</h1>
+                <table>
+                    <tr>
+                        <td>Use meaningful names</td>
+                    </tr>
+                    <tr>
+                        <td>Keep it simple</td>
+                    </tr>
+                    <tr>
+                        <td>Make everysubtask to be just one thing</td>
+                    </tr>
+                </table>
+            <div id="go_back" style="cursor: pointer;" onclick="window.location='/';">
+                <span class="material-symbols-rounded">
+                    arrow_back
+                    </span>
+                <p>Go to Dasboard</p>
+            </div>
+        </div>
+        <div id="form">
+            <form action="/tasks" method="POST">
+                <h1>Task name</h1>
+                <input type="text" placeholder="Task name" name="task_name">
+                <br>
+                <h1>Due date</h1>
+                <input type="date" name="due_date">
+                <br>
+                <input type="radio" id="important" name="task_type" value="1">
+                <label for="important">Important</label>    
+                <input type="radio" id="non_important" name="task_type" value="0">
+                <label for="non_important">Non important</label><br>
+                <h1>Subtasks</h1>
+                <div class="sub_task">
+                    <input type="text" name="sub_task">
+                </div>
+                <div id="add_sub"  style="cursor: pointer;" onclick="add_subtask()">
+                    + Add subtask
+                </div>
+                <div id="submit_button">
+                <button type="submit" >Save task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
