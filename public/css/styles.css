@@ -35,6 +35,7 @@ header {
     font-family: 'PT Sans', 'sans-serif';
     font-weight: 700;
     float: right;
+   
 }
 
 /* Body */
@@ -290,4 +291,7 @@ table {
     font-family: 'PT Sans', 'sans-serif';
     font-size: 18px;
     padding:20px 10px 20px 20px
+}
+.task_id {
+    display:none;
 }

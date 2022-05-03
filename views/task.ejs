@@ -47,15 +47,19 @@
                 <p>Go to Dasboard</p>
             </div>
         </div>
+        <%for(let i = 0; i < tasks.length; i++) {%>
+            <% if (tasks[i]._id == '626dd74227245f18d00ca76a') {%>
         <div id="display_task">
             <div id="title">
-                <%= tasks[4].task_name %>
+                <%=tasks[i].task_name%>
             </div>
-            <% for(let i = 0; i<tasks[4].sub_task.length;i++) {%>
+            <% for(let j = 0; j<tasks[i].sub_task.length;j++) {%>
             <div class="display_subtask">
-                <%= tasks[4].sub_task[i]%>
+                <%= tasks[i].sub_task[j]%>
             </div>
+            <%} %> <%} %>
             <%} %>
+
         </div>
 
     </div>

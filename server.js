@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb+srv://ronald:printer2107@cluster0.qwvgy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-
+const u = require('url');
 MongoClient.connect(url, { useUnifiedTopology: true }).then(
     client => {
         console.log('Connected to database');
@@ -29,6 +29,7 @@ MongoClient.connect(url, { useUnifiedTopology: true }).then(
         })
         app.get('/add_task.ejs', (req, res) => {
             res.render('add_task.ejs', {})
+            
         });
 
 
@@ -36,6 +37,7 @@ MongoClient.connect(url, { useUnifiedTopology: true }).then(
             task.insertOne(req.body).then(result => {
                 res.redirect('/');
             }).catch(error => console.log(error))
+            
         });
 
         // Display information
@@ -43,15 +45,11 @@ MongoClient.connect(url, { useUnifiedTopology: true }).then(
             db.collection('tasks').find().toArray()
             .then(results => {
               res.render('task.ejs', { tasks: results })
-            }).catch(error => console.error(error))
+            }).catch(error => console.error(error));
+            let q = u.parse(req.url, true).query;
+            console.log(q)
         })
         
     }
 ).catch(error => console.error(error))
 
-// var http = require('http');
-// http.createServer(function (req, res) {
-//   res.writeHead(200, {'Content-Type': 'text/html'});
-//   res.write(req.url);
-//   res.end();
-// }).listen(8080);

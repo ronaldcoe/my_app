@@ -51,7 +51,8 @@
 
             let fDate
             if (date.getMonth() <= 9) {
-                fDate = `${date.getFullYear()}-0${date.getMonth()+01}-${date.getDate()}`; 
+                fDate = `${date.getFullYear()}-0${date.getMonth()+01}-0${date.getDate()}`; 
+                console.log(fDate);
             }%>
 
             <div id="today_h">
@@ -62,10 +63,8 @@
             </div>
             <%for(let i = 0; i < tasks.length; i++) {%>
                 <% if (tasks[i].due_date == fDate) {%>
-                <div class="content_task">
-                    
-
-                   
+                <div class="content_task" style="cursor: pointer;" onclick="window.location='task.ejs';get_id()"> 
+                    <div class="task_id"><%=tasks[i]._id%></div>                  
                     <% if (tasks[i].task_type==1) { %>
                         <div class="type_c" style="background-color:red ;"></div>
                     <% }  else {%>
@@ -111,7 +110,7 @@
                 <% if (tasks[i].due_date != fDate) {%>
                 <div class="content_task">
                     
-
+                    <div class="task_id"><%=tasks[i]._id%></div>
                    
                     <% if (tasks[i].task_type==1) { %>
                         <div class="type_c" style="background-color:red ;"></div>
