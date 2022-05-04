@@ -62,37 +62,44 @@
                 <h1>Today</h1>
             </div>
             <%for(let i = 0; i < tasks.length; i++) {%>
+                <%let date = tasks[i].due_date.split('-');%>
+                <%const months = {'01':"Jan", '02':"Feb", '03':"Mar", '04':"Apr", '05':"May", '06':"Jun", '07':"Jul", '08':"Aug", '09':"Sep", '10':"Oct", '11':"Nov", '12':"Dec"};%>
                 <% if (tasks[i].due_date == fDate) {%>
-                <div class="content_task"> 
+                <div class="content_task"  style="cursor: pointer;" onclick="window.location='task.ejs/?id=<%=tasks[i]._id%>'"> 
                     <div class="task_id"><%=tasks[i]._id%></div>                  
                     <% if (tasks[i].task_type==1) { %>
-                        <div class="type_c" style="background-color:red ;"></div>
+                        <div class="type_c" style="background-color:rgb(218, 44, 56) ;">
+                            <p class="month" style="color:rgb(236, 226, 208)"><%= months[date[1]]%></p>
+                            <p class="day" style="color:rgb(236, 226, 208)"><%=date[2]%></p>
+                        </div>
                     <% }  else {%>
-                        <div class="type_c" style="background-color:rgb(30, 127, 206) ;"></div>
+                        <div class="type_c" style="background-color:rgb(91, 192, 235) ;">
+                            <p class="month" style="color:rgb(13, 44, 84)"><%= months[date[1]]%></p>
+                            <p class="day" style="color:rgb(13, 44, 84)"><%=date[2]%></p>
+                        </div>
                         <%} %>
                     
                
                     <div class="header_c">
                         <p><%= tasks[i].task_name%></p>                    
                     </div>
-                    <p class="percentage_c">50%</p>
+                    <!-- <p class="percentage_c">50%</p> -->
                     <div class="my_progress">
-                        <div class="my_bar" style=" width: 50%; height: 10px; background-color:#58b947; border-radius: 6px;"></div>
+                        <!-- <div class="my_bar" style=" width: 50%; height: 10px; background-color:#58b947; border-radius: 6px;"></div> -->
                         
                     </div>
                     
                     <div class="details_c">
-                        <span class="material-symbols-rounded">
-                            event_available
-                        </span>
-                        <P><%= tasks[i].due_date%></P>
-                        <span class="material-symbols-rounded">
+                        
+                        <!-- <span class="material-symbols-rounded">
                             format_list_bulleted
-                        </span>
+                        </span> -->
+                        <p>Subtasks:</p>
                         <P><%= tasks[i].sub_task.length%></P>
-                        <span class="material-symbols-rounded">
+                        <!-- <span class="material-symbols-rounded">
                             task_alt
-                        </span>
+                        </span> -->
+                        <p>Completed:</p>
                         <P>8</P>
                     </div>
                     
@@ -108,6 +115,8 @@
                 <h1>In progress</h1>
             </div>
             <%for(let i = 0; i < tasks.length; i++) {%>
+                <%let date = tasks[i].due_date.split('-');%>
+                <%const months = {'01':"Jan", '02':"Feb", '03':"Mar", '04':"Apr", '05':"May", '06':"Jun", '07':"Jul", '08':"Aug", '09':"Sep", '10':"Oct", '11':"Nov", '12':"Dec"};%>
                 <% if (tasks[i].due_date != fDate) {%>
                 
                 <div class="content_task" style="cursor: pointer;" onclick="window.location='task.ejs/?id=<%=tasks[i]._id%>'">
@@ -115,34 +124,39 @@
                         <div id="<%=tasks[i]._id%>"><%=tasks[i]._id%></div>
                     </div>
                     <% if (tasks[i].task_type==1) { %>
-                        <div class="type_c" style="background-color:red ;"></div>
+                        <div class="type_c" style="background-color:rgb(218, 44, 56) ;">
+                            <p class="month" style="color:rgb(236, 226, 208)"><%= months[date[1]]%></p>
+                            <p class="day" style="color:rgb(236, 226, 208)"><%=date[2]%></p>
+                        </div>
                     <% }  else {%>
-                        <div class="type_c" style="background-color:rgb(30, 127, 206) ;"></div>
+                        <div class="type_c" style="background-color:rgb(91, 192, 235) ;">
+                            <p class="month" style="color:rgb(13, 44, 84)"><%= months[date[1]]%></p>
+                            <p class="day" style="color:rgb(13, 44, 84)"><%=date[2]%></p>
+                        </div>
                         <%} %>
                     
                
                     <div class="header_c">
                         <p><%= tasks[i].task_name%></p>                    
                     </div>
-                    <p class="percentage_c">50%</p>
-                    <div class="my_progress">
+                    <!-- <p class="percentage_c">50%</p> -->
+                    <!-- <div class="my_progress">
                         <div class="my_bar" style=" width: 50%; height: 10px; background-color:#58b947; border-radius: 6px;"></div>
                         
-                    </div>
+                    </div> -->
                     
                     <div class="details_c">
-                        <span class="material-symbols-rounded">
-                            event_available
-                        </span>
-                        <P><%= tasks[i].due_date%></P>
-                        <span class="material-symbols-rounded">
+                       
+                        <!-- <span class="material-symbols-rounded">
                             format_list_bulleted
-                        </span>
+                        </span> -->
+                        <p>Subtasks:</p>
                         <P><%= tasks[i].sub_task.length%></P>
-                        <span class="material-symbols-rounded">
+                        <!-- <span class="material-symbols-rounded">
                             task_alt
-                        </span>
-                        <P>8</P>
+                        </span> -->
+                        <p>Completed:</p>
+                        <p>8</p>
                     </div>
                  
                 </div>
