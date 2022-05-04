@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb+srv://ronald:printer2107@cluster0.qwvgy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const u = require('url');
+
+const ObjectId = require('mongodb').ObjectId;
 MongoClient.connect(url, { useUnifiedTopology: true }).then(
     client => {
         console.log('Connected to database');
@@ -12,6 +14,8 @@ MongoClient.connect(url, { useUnifiedTopology: true }).then(
         app.use(express.static('public'));
         app.use(bodyParser.urlencoded({extended:true}));
         app.use(bodyParser.json());
+        
+        
 
         
 
@@ -42,12 +46,14 @@ MongoClient.connect(url, { useUnifiedTopology: true }).then(
 
         // Display information
         app.get('/task.ejs', (req, res) => {
-            db.collection('tasks').find().toArray()
+            const q = u.parse(req.url, true);
+            const qdata = q.query;
+            let query = {"_id" : ObjectId(qdata.id)}
+            db.collection('tasks').find(query).toArray()
             .then(results => {
               res.render('task.ejs', { tasks: results })
-            }).catch(error => console.error(error));
-            let q = u.parse(req.url, true).query;
-            console.log(q)
+            }).catch(error => console.error(error))
+            
         })
         
     }

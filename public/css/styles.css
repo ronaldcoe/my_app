@@ -39,7 +39,7 @@ header {
 }
 
 /* Body */
-#wrapper {
+#wrapper, #wrapper_task {
     display: grid;
     grid-gap: 15px;
     grid-template-columns: 320px 300px 300px 300px;

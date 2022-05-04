@@ -63,7 +63,7 @@
             </div>
             <%for(let i = 0; i < tasks.length; i++) {%>
                 <% if (tasks[i].due_date == fDate) {%>
-                <div class="content_task" style="cursor: pointer;" onclick="window.location='task.ejs';get_id()"> 
+                <div class="content_task"> 
                     <div class="task_id"><%=tasks[i]._id%></div>                  
                     <% if (tasks[i].task_type==1) { %>
                         <div class="type_c" style="background-color:red ;"></div>
@@ -95,6 +95,7 @@
                         </span>
                         <P>8</P>
                     </div>
+                    
                 </div>
             <%} %>
             <%}%>
@@ -108,10 +109,11 @@
             </div>
             <%for(let i = 0; i < tasks.length; i++) {%>
                 <% if (tasks[i].due_date != fDate) {%>
-                <div class="content_task">
-                    
-                    <div class="task_id"><%=tasks[i]._id%></div>
-                   
+                
+                <div class="content_task" style="cursor: pointer;" onclick="window.location='task.ejs/?id=<%=tasks[i]._id%>'">
+                    <div class="task_id">
+                        <div id="<%=tasks[i]._id%>"><%=tasks[i]._id%></div>
+                    </div>
                     <% if (tasks[i].task_type==1) { %>
                         <div class="type_c" style="background-color:red ;"></div>
                     <% }  else {%>
@@ -142,6 +144,7 @@
                         </span>
                         <P>8</P>
                     </div>
+                 
                 </div>
             <%} %>
             <%}%>
