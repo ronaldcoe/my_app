@@ -56,8 +56,12 @@
             <div class="display_subtask"><%=tasks[0].sub_task[j]%></div>
             <%} %>
         </div>
-
-
+        <% if (tasks[0].complete != 1) {%>
+        <button id="mark_completed">Mark Completed</button>
+         <%} else {%>
+            <button id="mark_completed" style="display: none">Mark Completed</button>
+            <button id="mark_incomplete" >Mark incomplete</button>
+            <%} %>
 
     </div>
     <script src="\script.js"></script>

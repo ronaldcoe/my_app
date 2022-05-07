@@ -308,3 +308,26 @@ table {
 .task_id {
     display:none;
 }
+
+#mark_completed {
+    background-color: #58b947;
+    border-radius: 6px;
+    color: white;
+    border-style: none;
+    width: 120px;
+    height: 40px;
+    grid-column:2/3;
+    cursor: pointer;
+
+}
+
+#mark_incomplete {
+        background-color: #8855a2;
+        border-radius: 6px;
+        color: white;
+        border-style: none;
+        width: 120px;
+        height: 40px;
+        grid-column:2/3;
+        cursor: pointer;
+}

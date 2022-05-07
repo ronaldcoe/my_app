@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb+srv://ronald:printer2107@cluster0.qwvgy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const u = require('url');
+const { vary } = require("express/lib/response");
 
 const ObjectId = require('mongodb').ObjectId;
 MongoClient.connect(url, { useUnifiedTopology: true }).then(
@@ -44,17 +45,57 @@ MongoClient.connect(url, { useUnifiedTopology: true }).then(
             
         });
 
+        // app.put('/tasks', (req, res) => {
+        //     const q = u.parse(req.url, true);
+        //     const qdata = q.query;
+        //     let query = {_id : ObjectId("626cb311b30d1af3e195fa18")}
+        //     console.log(qdata.id)
+        //     task.findOneAndUpdate(query, {
+        //         $set: {
+        //             complete: 6
+        //         }
+        //     },
+        //     {
+        //         upsert: true
+        //     }).then(result => {
+        //         res.json('Success')
+        //     }).catch(err => console.error(err))
+            
+        // });
+
         // Display information
+        
+
         app.get('/task.ejs', (req, res) => {
-            const q = u.parse(req.url, true);
-            const qdata = q.query;
-            let query = {"_id" : ObjectId(qdata.id)}
+            var q = u.parse(req.url, true);
+            var qdata = q.query;
+            var query = {"_id" : ObjectId(qdata.id)}
+            console.log(query)
             db.collection('tasks').find(query).toArray()
             .then(results => {
               res.render('task.ejs', { tasks: results })
             }).catch(error => console.error(error))
             
+            app.put('/tasks', (req, res) => {
+                var qdata = q.query;
+                var query = {"_id" : ObjectId(qdata.id)}
+                console.log(query)
+                task.findOneAndUpdate(query, {
+                    $set: {
+                        complete: req.body.complete
+                    }
+                },
+                {
+                    upsert: true
+                }).then(result => {
+                    res.json('Success')
+                }).catch(err => console.error(err))
+                
+            });
+            
         })
+
+        
         
     }
 ).catch(error => console.error(error))

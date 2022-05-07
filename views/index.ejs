@@ -29,14 +29,30 @@
     <div id="wrapper">
         <div id="summary">
             <h1>Summary</h1>
+            <%let progressCount = 0; %>
+
+            <%for(let i = 0; i < tasks.length; i++) {%>
+                <%if (tasks[i].complete != 1) {%>
+                    <%progressCount += 1;%>
+                <%} %>
+            <%}%>
+
+            <%let completeCount = 0; %>
+
+            <%for(let i = 0; i < tasks.length; i++) {%>
+                <%if (tasks[i].complete == 1) {%>
+                    <%completeCount += 1;%>
+                <%} %>
+            <%}%>
                 <table>
                     <tr>
-                        <td>In process</td>
-                        <td>20</td>
+                        <td>In progress</td>
+                       
+                        <td><%=progressCount%></td>
                     </tr>
                     <tr>
                         <td id="completed">Completed</td>
-                        <td>30</td>
+                        <td><%=completeCount%></td>
                     </tr>
                 </table>
             <div id="add_task" style="cursor: pointer;" onclick="window.location='add_task.ejs';">
@@ -64,7 +80,7 @@
             <%for(let i = 0; i < tasks.length; i++) {%>
                 <%let date = tasks[i].due_date.split('-');%>
                 <%const months = {'01':"Jan", '02':"Feb", '03':"Mar", '04':"Apr", '05':"May", '06':"Jun", '07':"Jul", '08':"Aug", '09':"Sep", '10':"Oct", '11':"Nov", '12':"Dec"};%>
-                <% if (tasks[i].due_date == fDate) {%>
+                <% if (tasks[i].due_date == fDate && tasks[i].complete != 1) {%>
                 <div class="content_task"  style="cursor: pointer;" onclick="window.location='task.ejs/?id=<%=tasks[i]._id%>'"> 
                     <div class="task_id"><%=tasks[i]._id%></div>                  
                     <% if (tasks[i].task_type==1) { %>
@@ -95,12 +111,12 @@
                             format_list_bulleted
                         </span> -->
                         <p>Subtasks:</p>
+                       
                         <P><%= tasks[i].sub_task.length%></P>
                         <!-- <span class="material-symbols-rounded">
                             task_alt
                         </span> -->
-                        <p>Completed:</p>
-                        <P>8</P>
+                       
                     </div>
                     
                 </div>
@@ -117,6 +133,7 @@
             <%for(let i = 0; i < tasks.length; i++) {%>
                 <%let date = tasks[i].due_date.split('-');%>
                 <%const months = {'01':"Jan", '02':"Feb", '03':"Mar", '04':"Apr", '05':"May", '06':"Jun", '07':"Jul", '08':"Aug", '09':"Sep", '10':"Oct", '11':"Nov", '12':"Dec"};%>
+                <% if (tasks[i].complete != 1) {%>
                 <% if (tasks[i].due_date != fDate) {%>
                 
                 <div class="content_task" style="cursor: pointer;" onclick="window.location='task.ejs/?id=<%=tasks[i]._id%>'">
@@ -155,14 +172,15 @@
                         <!-- <span class="material-symbols-rounded">
                             task_alt
                         </span> -->
-                        <p>Completed:</p>
-                        <p>8</p>
+                        
                     </div>
                  
                 </div>
+                <%} %>
             <%} %>
             <%}%>
         </div>
+        
         <div id="completed">
             <div id="completed_h">
                 <span class="material-symbols-rounded">
@@ -170,7 +188,48 @@
                 </span>
                 <h1>Completed</h1>
             </div>
-     
+            <%for(let i = 0; i < tasks.length; i++) {%>
+                <%let date = tasks[i].due_date.split('-');%>
+                <%const months = {'01':"Jan", '02':"Feb", '03':"Mar", '04':"Apr", '05':"May", '06':"Jun", '07':"Jul", '08':"Aug", '09':"Sep", '10':"Oct", '11':"Nov", '12':"Dec"};%>
+                <% if (tasks[i].complete == 1) {%>
+                
+                <div class="content_task" style="cursor: pointer;" onclick="window.location='task.ejs/?id=<%=tasks[i]._id%>'">
+                    <div class="task_id">
+                        <div id="<%=tasks[i]._id%>"><%=tasks[i]._id%></div>
+                    </div>
+                    
+                        <div class="type_c" style="background-color:rgb(88, 185, 71) ;">
+                            <p class="month" style="color:rgb(236, 226, 208)"><%= months[date[1]]%></p>
+                            <p class="day" style="color:rgb(236, 226, 208)"><%=date[2]%></p>
+                        </div>
+                   
+                    
+               
+                    <div class="header_c">
+                        <p><%= tasks[i].task_name%></p>                    
+                    </div>
+                    <!-- <p class="percentage_c">50%</p> -->
+                    <!-- <div class="my_progress">
+                        <div class="my_bar" style=" width: 50%; height: 10px; background-color:#58b947; border-radius: 6px;"></div>
+                        
+                    </div> -->
+                    
+                    <div class="details_c">
+                       
+                        <!-- <span class="material-symbols-rounded">
+                            format_list_bulleted
+                        </span> -->
+                        <p>Subtasks:</p>
+                        <P><%= tasks[i].sub_task.length%></P>
+                        <!-- <span class="material-symbols-rounded">
+                            task_alt
+                        </span> -->
+                        
+                    </div>
+                 
+                </div>
+            <%} %>
+            <%}%>
         </div>
         
     </div>
