@@ -2,7 +2,7 @@
 I built this app with the intneiton of learning Node.js, JavaScript, and MongoDB. This was the first time using these tools.
 This application allows the user to keep track of his or her tasks. I wanted to make a simple app that would be easy to use and very intuitive.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/WxjTjroi7oE)
 
 # Web Pages
 1. Dashboard/Index:
@@ -25,6 +25,7 @@ The user can click on any task to display its information. This is done through 
  - Node.js: Allows the used of JavaScript for the backend.
  - Express: Lightweight and fast web framework for Nodejs.
  - MongoDB: NoSQL database to store our data.
+ - Nodemon: This is use to facilitate the development enviroment. This dependecy will automatically refresh the server after a change is made to the code.
 
 # Useful Websites
 

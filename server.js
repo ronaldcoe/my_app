@@ -7,6 +7,7 @@ const u = require('url');
 const { vary } = require("express/lib/response");
 
 const ObjectId = require('mongodb').ObjectId;
+
 MongoClient.connect(url, { useUnifiedTopology: true }).then(
     client => {
         console.log('Connected to database');
