@@ -1,5 +1,5 @@
 # Overview
-I built this app with the intneiton of learning Node.js, JavaScript, and MongoDB. This was the first time using these tools.
+I built this app with the intention of learning Node.js, JavaScript, and MongoDB. This was the first time using these tools.
 This application allows the user to keep track of his or her tasks. I wanted to make a simple app that would be easy to use and very intuitive.
 
 [Software Demo Video](https://youtu.be/WxjTjroi7oE)
