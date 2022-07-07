@@ -22,7 +22,7 @@ The user can click on any task to display its information. This is done through 
 
  - HTML/CSS: Front-end. 
  - JavaScript: Front-end and Backend.
- - Node.js: Allows the used of JavaScript for the backend.
+ - Node.js: Allows the use of JavaScript for the backend.
  - Express: Lightweight and fast web framework for Nodejs.
  - MongoDB: NoSQL database to store our data.
  - Nodemon: This is use to facilitate the development enviroment. This dependecy will automatically refresh the server after a change is made to the code.
