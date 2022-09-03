@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb+srv://ronald:printer2107@cluster0.qwvgy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const url = 'mongodb+srv://ronald:pass@cluster0.qwvgy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const u = require('url');
 const { vary } = require("express/lib/response");
 
